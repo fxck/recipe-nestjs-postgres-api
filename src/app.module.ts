@@ -11,6 +11,12 @@ import { TodosModule } from './todos/todos.module';
       type: 'postgres',
       url: process.env.DB_URL,
       autoLoadEntities: true,
+      synchronize: true,
+      migrationsRun: true,
+      migrations: ['src/migrations/*{.ts,.js}'],
+      cli: {
+        migrationsDir: 'src/migrations',
+      },
     }),
     TodosModule,
   ],
