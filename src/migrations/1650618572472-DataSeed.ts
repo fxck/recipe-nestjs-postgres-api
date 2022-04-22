@@ -18,7 +18,7 @@ export class DataSeed1650618572472 implements MigrationInterface {
     const dataSeed = JSON.parse(process.env.ZEROPS_RECIPE_DATA_SEED || '[]');
     const migrations = await queryRunner.query('SELECT * FROM migrations');
     if (migrations.length === 0) {
-      this._connection.synchronize();
+      await this._connection.synchronize();
       console.log('Seeding data for the Zerops recipe ⏳');
       if (!!dataSeed?.length) {
         await this._entityManager.save(
