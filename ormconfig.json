@@ -4,6 +4,7 @@
 		"type": "postgres",
 		"url": "postgresql://db:oykTlBxzxKxAasx2@db:5432",
 		"autoLoadEntities": true,
+		"entities": ["dist/todos/*.entity{.js}"],
 		"synchronize": false,
 		"migrations": ["dist/migrations/*{.js}"],
 		"migrationsRun": true
