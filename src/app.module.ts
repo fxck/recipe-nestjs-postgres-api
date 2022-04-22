@@ -13,7 +13,7 @@ import { TodosModule } from './todos/todos.module';
       autoLoadEntities: true,
       // synchronize: true,
       migrationsRun: true,
-      migrations: ['src/migrations/*{.ts,.js}'],
+      migrations: ['dist/migrations/*{.js}'],
       cli: {
         migrationsDir: 'src/migrations',
       },
