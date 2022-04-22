@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import {
   Connection,
   EntityManager,
@@ -6,6 +7,7 @@ import {
 } from 'typeorm';
 import { Todo } from '../todos/todos.entity';
 
+@Injectable()
 export class DataSeed1650618572472 implements MigrationInterface {
   name = 'DataSeed1650618572472';
 
