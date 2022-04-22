@@ -7,7 +7,11 @@ export class DataSeed1650618572472 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     console.log('... TypeORM: Seed Up Data');
-    const migrations = await queryRunner.query('SELECT * FROM migrations');
+    const dataSeed = JSON.parse(process.env.ZEROPS_RECIPE_DATA_SEED || '[]');
+    const migrations = await queryRunner.query('SELECT * FROM migrationss');
+    // if (migrations?.length === 0 && !!dataSeed?.length) {
+
+    // }
     console.log('... TypeORM: Migrations:', migrations);
   }
 
