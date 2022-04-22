@@ -1,21 +1,42 @@
-import { Connection, MigrationInterface, QueryRunner } from 'typeorm';
+import {
+  Connection,
+  EntityManager,
+  MigrationInterface,
+  QueryRunner,
+} from 'typeorm';
+import { Todo } from '../todos/todos.entity';
 
 export class DataSeed1650618572472 implements MigrationInterface {
   name = 'DataSeed1650618572472';
 
-  constructor(private readonly _connection: Connection) {}
+  constructor(
+    private readonly _connection: Connection,
+    private readonly _entityManager: EntityManager,
+  ) {}
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    console.log('... TypeORM: Seed Up Data');
     const dataSeed = JSON.parse(process.env.ZEROPS_RECIPE_DATA_SEED || '[]');
-    const migrations = await queryRunner.query('SELECT * FROM migrationss');
-    // if (migrations?.length === 0 && !!dataSeed?.length) {
-
-    // }
-    console.log('... TypeORM: Migrations:', migrations);
+    const migrations = await queryRunner.query('SELECT * FROM migrations');
+    if (migrations.length === 0) {
+      this._connection.synchronize();
+      console.log('Seeding data for the Zerops recipe ⏳');
+      if (!!dataSeed?.length) {
+        await this._entityManager.save(
+          Todo,
+          dataSeed.map((text) => ({ text })),
+        );
+        console.log('Done ✅');
+      } else {
+        console.log('Done ✅');
+      }
+    } else {
+      console.log('Seeding data for the Zerops recipe was skipped.');
+    }
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    console.log('Seed Down:', queryRunner);
+    console.log('Clearing data for the Zerops recipe ⏳');
+    await this._entityManager.clear(Todo);
+    console.log('Done ✅');
   }
 }
