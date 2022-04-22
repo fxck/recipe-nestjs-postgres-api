@@ -25,6 +25,8 @@ export class AppService implements OnApplicationBootstrap {
         data.map((text) => ({ text })),
       );
       console.log('Done ✅');
+    } else {
+      console.log('Data for Zerops recipe already seeded.');
     }
   }
 }
