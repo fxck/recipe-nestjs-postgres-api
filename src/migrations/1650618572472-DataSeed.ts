@@ -1,4 +1,3 @@
-import { Injectable } from '@nestjs/common';
 import {
   Connection,
   EntityManager,
@@ -7,7 +6,6 @@ import {
 } from 'typeorm';
 import { Todo } from '../todos/todos.entity';
 
-@Injectable()
 export class DataSeed1650618572472 implements MigrationInterface {
   name = 'DataSeed1650618572472';
 
@@ -20,7 +18,9 @@ export class DataSeed1650618572472 implements MigrationInterface {
     const dataSeed = JSON.parse(process.env.ZEROPS_RECIPE_DATA_SEED || '[]');
     const migrations = await queryRunner.query('SELECT * FROM migrations');
     if (migrations.length === 0) {
-      console.log('... connection:', this._connection);
+      console.log('... queryRunner:', queryRunner);
+      console.log('... EntityManager:', this._entityManager);
+      /*
       await this._connection.synchronize();
       console.log('Seeding data for the Zerops recipe ⏳');
       if (!!dataSeed?.length) {
@@ -32,6 +32,7 @@ export class DataSeed1650618572472 implements MigrationInterface {
       } else {
         console.log('Done ✅');
       }
+      */
     } else {
       console.log('Seeding data for the Zerops recipe was skipped.');
     }
