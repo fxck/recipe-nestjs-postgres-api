@@ -5,21 +5,7 @@ import { AppService } from './app.service';
 import { TodosModule } from './todos/todos.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot(),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DB_URL,
-      autoLoadEntities: true,
-      // synchronize: true,
-      migrationsRun: true,
-      migrations: ['/var/www/dist/migrations/*{.js}'],
-      cli: {
-        migrationsDir: 'src/migrations',
-      },
-    }),
-    TodosModule,
-  ],
+  imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot(), TodosModule],
   controllers: [],
   providers: [AppService],
 })
