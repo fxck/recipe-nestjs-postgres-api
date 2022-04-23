@@ -6,22 +6,15 @@ export class DataSeed1650618572472 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     const dataSeed = JSON.parse(process.env.ZEROPS_RECIPE_DATA_SEED || '[]');
-    const migrations = await queryRunner.query('SELECT * FROM migrations');
-    if (migrations.length === 0) {
-      await queryRunner.connection.synchronize();
-      console.log('Seeding data for the Zerops recipe ⏳');
-      if (!!dataSeed?.length) {
-        await queryRunner.manager.save(
-          Todo,
-          dataSeed.map((text) => ({ text })),
-        );
-        console.log('Done ✅');
-      } else {
-        console.log('Done ✅');
-      }
-    } else {
-      console.log('Seeding data for the Zerops recipe was skipped.');
+    await queryRunner.connection.synchronize();
+    console.log('Seeding data for the Zerops recipe ⏳');
+    if (!!dataSeed?.length) {
+      await queryRunner.manager.save(
+        Todo,
+        dataSeed.map((text) => ({ text })),
+      );
     }
+    console.log('Done ✅');
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
