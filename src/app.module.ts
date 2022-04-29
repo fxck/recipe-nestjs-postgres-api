@@ -14,6 +14,7 @@ import { TodosModule } from './todos/todos.module';
       synchronize: false,
       migrations: ['dist/migrations/*.js'],
       migrationsRun: true,
+      logging: 'all',
     }),
     TodosModule,
   ],
