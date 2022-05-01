@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppService } from './app.service';
 import { TodosModule } from './todos/todos.module';
 
 @Module({
@@ -14,11 +13,10 @@ import { TodosModule } from './todos/todos.module';
       synchronize: false,
       migrations: ['dist/migrations/*.js'],
       migrationsRun: true,
-      logging: 'all',
     }),
     TodosModule,
   ],
   controllers: [],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}
