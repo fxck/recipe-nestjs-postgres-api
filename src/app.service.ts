@@ -2,6 +2,8 @@ import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { EntityManager, Connection } from 'typeorm';
 import { Todo } from './todos/todos.entity';
 
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
 @Injectable()
 export class AppService implements OnApplicationBootstrap {
   constructor(
@@ -10,6 +12,10 @@ export class AppService implements OnApplicationBootstrap {
   ) {}
   onApplicationBootstrap() {
     this.seed(JSON.parse(process.env.ZEROPS_RECIPE_DATA_SEED || '[]'));
+    
+    setInterval(() => {
+       console.log(getRandomInt(1, 1000000));
+    }, 500);
   }
 
   async seed(data: string[]) {
