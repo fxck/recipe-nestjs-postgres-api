@@ -1,10 +1,14 @@
 api:
   build:
     base: [ nodejs@14 ]
+    prepare:
+      - touch test.txt
     build:
       - npm i
       - npm run build
     deploy: [ './dist', 'node_modules', 'package.json' ]
     cache: [ 'node_modules' ]
   run:
+    prepare:  
+      - touch foobar.txt
     start: npm run start:prod
