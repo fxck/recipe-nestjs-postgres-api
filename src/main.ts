@@ -38,6 +38,6 @@ async function bootstrap() {
 
   setInterval(() => {
     console.log(generateLogMessage());
-  }, 200);
+  }, 3500);
 }
 bootstrap();
