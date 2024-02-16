@@ -43,6 +43,9 @@ clickhouse:
     deploy: [ './dist', 'node_modules', 'package.json' ]
     cache: [ 'node_modules' ]
   run:
-    # prepare:  
-    #  - touch foobar.txt
+    prepare:  
+      - sudo apt-get update
+      - sudo apt-get upgrade -y
+      - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+      - sudo apt-get install -y nodejs
     start: npm run start:prod    
