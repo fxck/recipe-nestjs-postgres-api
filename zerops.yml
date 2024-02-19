@@ -17,6 +17,7 @@ api:
     foo: bar
     WP_DEBUG: false
     FOOBAR: baz
+    BAZ: asdasddd
 
 app:
   build:
