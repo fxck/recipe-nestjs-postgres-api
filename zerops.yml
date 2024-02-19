@@ -16,7 +16,6 @@ api:
     myDatabaseUrl: ${DB_URL}
     foo: bar
     WP_DEBUG: false
-    afdf: aqe123
     FOOBAR: baz
 
 app:
