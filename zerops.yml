@@ -13,9 +13,9 @@ api:
       # - touch foobar.txt
     start: npm run start:prod
   envVariables:
-    key: value11
-    key22: value22
-    key1: value1
+    myDatabaseUrl: ${DB_URL}
+    foo: bar
+    WP_DEBUG: false
 
 app:
   build:
