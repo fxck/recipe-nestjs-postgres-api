@@ -15,8 +15,9 @@ api:
   envVariables:
     myDatabaseUrl: ${DB_URL}
     foo: bar
-    WP_DEBUG: false.
+    WP_DEBUG: false
     afdf: aqe123
+    FOOBAR: baz
 
 app:
   build:
