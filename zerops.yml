@@ -14,9 +14,9 @@ api:
     start: npm run start:prod
   envVariables:
     myDatabaseUrl: ${DB_URL}
-    WP_DEBUG: false
-    FOOBAR: baz
+    WP_DEBUG: true
     BAZ: asdasddd
+    HELLO: WORLD
 
 app:
   build:
